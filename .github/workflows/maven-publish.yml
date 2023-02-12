@@ -43,6 +43,7 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         name: Release ${{ github.ref }}
+        token: ${{ secrets.GH_TOKEN }}
         body: Build Release.
         draft: false
         prerelease: false
