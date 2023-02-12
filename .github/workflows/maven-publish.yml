@@ -30,7 +30,7 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: list all dir
       run: |
-        apt install tree
+        bash -c "sudo apt install tree"
         tree
 
     #- name: Publish to GitHub Packages Apache Maven
