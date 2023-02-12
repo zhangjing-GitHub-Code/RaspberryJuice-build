@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
   push:
     branches: master
-    tags-ignore: '*'
     tags: []
 
 jobs:
