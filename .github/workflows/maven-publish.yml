@@ -2,12 +2,11 @@
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
 
 name: Maven Package
-nmtaowa'd'2' no
 on:
   workflow_dispatch:
   push:
 
-obs:
+jobs:
   build:
 
     runs-on: ubuntu-latest
