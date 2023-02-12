@@ -49,3 +49,14 @@ jobs:
         prerelease: false
         files: |
           target*/*.jar
+    - name: File in Jars
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: "${{ github.ref }} jars"
+        name: "jars Release ${{ github.ref }}"
+        token: ${{ secrets.GH_TOKEN }}
+        body: Build Release not build jars?
+        draft: false
+        prerelease: false
+        files: |
+          jars*/*.jar
