@@ -37,12 +37,12 @@ jobs:
         #GITHUB_TOKEN: ${{ github.token }}
     - name: Get current date
       id: gdate
-      run: echo "::set-output name=today::$(date +'%Y-%m-%d#%H_%M%S')"
+      run: echo "::set-output name=today::$(date +'%Y-%m-%d_%H_%M_%S')"
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: "${{ github.ref }}#${{ steps.gdate.outputs.today }}"
-        name: "Release ${{ github.ref }}#${{ steps.gdate.outputs.today }}"
+        tag_name: "${{ github.ref }}-${{ steps.gdate.outputs.today }}"
+        name: "Release ${{ github.ref }}-${{ steps.gdate.outputs.today }}"
         token: ${{ secrets.GH_TOKEN }}
         body: "Build Release at ${{ steps.gdate.outputs.today }}."
         draft: false
@@ -52,8 +52,8 @@ jobs:
     - name: File in Jars
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: "${{ github.ref }}#${{ steps.gdate.outputs.today }}-jars"
-        name: "jars Release ${{ github.ref }}#${{ steps.gdate.outputs.today }}"
+        tag_name: "${{ github.ref }}-${{ steps.gdate.outputs.today }}-jars"
+        name: "jars Release ${{ github.ref }}-${{ steps.gdate.outputs.today }}"
         token: ${{ secrets.GH_TOKEN }}
         body: Build Release not build jars?
         draft: false
