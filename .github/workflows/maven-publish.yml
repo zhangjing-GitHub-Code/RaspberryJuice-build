@@ -28,8 +28,22 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: list all dir
+      run: |
+        apt install tree
+        tree
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    #- name: Publish to GitHub Packages Apache Maven
+      #run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      #env:
+        #GITHUB_TOKEN: ${{ github.token }}
+    - name: Create Release and Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref }}
+        name: Release ${{ github.ref }}
+        body: TODO New Release.
+        draft: false
+        prerelease: false
+        files: |
+          *.jar
